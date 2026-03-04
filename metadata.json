@@ -1,0 +1,5 @@
+{
+  "name": "Ecoyaan Checkout Flow",
+  "description": "A simplified checkout flow with cart, shipping, and payment simulation.",
+  "requestFramePermissions": []
+}
