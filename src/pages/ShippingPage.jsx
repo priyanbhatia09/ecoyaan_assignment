@@ -100,7 +100,7 @@ export function ShippingPage() {
             </div>
 
             <div className="mt-6 flex items-center justify-end gap-x-6">
-              <Button type="submit" size="lg" className="w-full sm:w-auto">
+              <Button type="submit" size="lg" className="w-full sm:w-auto bg-orange-600 hover:bg-orange-700 focus:ring-orange-500">
                 Continue to Payment
               </Button>
             </div>

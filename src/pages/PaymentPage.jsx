@@ -4,13 +4,15 @@ import { useCheckout } from '@/context/CheckoutContext';
 import { OrderSummary } from '@/components/cart/OrderSummary';
 import { Button } from '@/components/ui/Button';
 import { motion } from 'motion/react';
-import { CheckCircle, MapPin, Phone, Mail } from 'lucide-react';
+import { CheckCircle, MapPin, Phone, Mail, Smartphone, CreditCard, Landmark, Banknote } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function PaymentPage() {
   const { shippingDetails, items, total } = useCheckout();
   const navigate = useNavigate();
   const [isProcessing, setIsProcessing] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [selectedMethod, setSelectedMethod] = useState('upi');
 
   // Redirect if no shipping details
   React.useEffect(() => {
@@ -26,6 +28,13 @@ export function PaymentPage() {
     setIsProcessing(false);
     setIsSuccess(true);
   };
+
+  const paymentMethods = [
+    { id: 'upi', label: 'UPI (Google Pay, PhonePe, Paytm)', icon: Smartphone },
+    { id: 'card', label: 'Credit / Debit Card', icon: CreditCard },
+    { id: 'netbanking', label: 'Net Banking', icon: Landmark },
+    { id: 'cod', label: 'Cash on Delivery', icon: Banknote },
+  ];
 
   if (isSuccess) {
     return (
@@ -92,17 +101,35 @@ export function PaymentPage() {
             </div>
           </div>
 
-          {/* Payment Method (Simulated) */}
+          {/* Payment Method */}
           <div className="rounded-lg border border-stone-200 bg-white p-6 shadow-sm">
             <h2 className="text-lg font-medium text-stone-900">Payment Method</h2>
-            <div className="mt-4">
-              <div className="flex items-center gap-4 rounded-md border border-emerald-200 bg-emerald-50 p-4">
-                <div className="h-4 w-4 rounded-full border-[5px] border-emerald-600 bg-white"></div>
-                <span className="font-medium text-stone-900">Cash on Delivery (Simulated)</span>
-              </div>
-              <p className="mt-2 text-sm text-stone-500 ml-8">
-                For this demo, we are simulating a Cash on Delivery payment. No actual payment will be processed.
-              </p>
+            <div className="mt-4 space-y-3">
+              {paymentMethods.map((method) => {
+                const Icon = method.icon;
+                const isSelected = selectedMethod === method.id;
+                return (
+                  <div
+                    key={method.id}
+                    onClick={() => setSelectedMethod(method.id)}
+                    className={cn(
+                      "flex cursor-pointer items-center gap-4 rounded-md border p-4 transition-all",
+                      isSelected 
+                        ? "border-stone-900 bg-stone-50 ring-1 ring-stone-900" 
+                        : "border-stone-200 bg-white hover:border-emerald-400 hover:shadow-[0_0_15px_rgba(16,185,129,0.2)]"
+                    )}
+                  >
+                    <div className={cn(
+                      "flex h-5 w-5 items-center justify-center rounded-full border",
+                      isSelected ? "border-stone-900" : "border-stone-400"
+                    )}>
+                      {isSelected && <div className="h-2.5 w-2.5 rounded-full bg-stone-900" />}
+                    </div>
+                    <Icon className="h-5 w-5 text-stone-600" />
+                    <span className="font-medium text-stone-900">{method.label}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -112,7 +139,7 @@ export function PaymentPage() {
         <OrderSummary isCheckout={true} />
         <div className="mt-6 border-t border-stone-200 pt-6">
             <Button 
-                className="w-full" 
+                className="w-full bg-orange-600 hover:bg-orange-700 focus:ring-orange-500" 
                 size="lg" 
                 onClick={handlePayment}
                 isLoading={isProcessing}
