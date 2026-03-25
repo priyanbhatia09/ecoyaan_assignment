@@ -1,20 +1,59 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# **ECOYAAN CHECKOUT WORKFLOW**
+# **ECOYAAN CHECKOUT WORKFLOW** <hr>
+### This checkout wokflow system is inpired by ecoyaan platform and its ui design. Below are some insights about this project.
+
+### Here is the deployed netlify app link [Netlify app](https://fastidious-moonbeam-701279.netlify.app/)
+<div>
+<img width="860" height="660" alt="Screenshot 2026-03-08 at 10 58 38 AM" src="https://github.com/user-attachments/assets/872b40b0-5dba-420b-9ead-c5ac3c8edaed" />
+</div>
+<BR><BR>
+<HR>
+<br><Br>
+<div>
+<video width="860" src="https://github.com/user-attachments/assets/9f175eb3-5732-4f8b-8461-3eafb11075cc">
 </div>
 
-# Run and deploy your AI Studio app
+Instructions for Local Execution:
 
-This contains everything you need to run your app locally.
+1.  Clone the Repository:
+    ```
+    git clone https://github.com/your-username/repository-name.git
+    ```
+2.  Navigate to the Project Directory:
+    ```
+    cd repository-name
+    ```
+3.  Open the Project:
 
-View your app in AI Studio: https://ai.studio/apps/2eaf9e74-df2d-417e-be73-d386ef712033
+    Open `index.html` in a web browser.
 
-## Run Locally
+    Alternatively, use a live server:
 
-**Prerequisites:**  Node.js
+    ```
+    npx live-server
 
+## Architecture Choices
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Multi-step Checkout Architecture
+
+The platform uses a 3-step checkout flow:
+*   Cart
+*   Shipping
+*   Payment
+
+### Two-column Page Layout
+
+The cart page is built using a split layout:
+*   Left side: cart items and quantity controls
+*   Right side: order summary and checkout action
+
+### Component-based UI Structure
+
+The page appears to be designed using reusable UI components such as:
+*   Header / brand bar
+*   Checkout progress indicator
+*   Cart item card
+*   Quantity selector
+*   Remove action
+*   Order summary panel
+*   Primary CTA button
