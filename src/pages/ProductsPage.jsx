@@ -3,20 +3,23 @@ import { useCheckout } from '@/context/CheckoutContext';
 import { motion } from 'motion/react';
 import { ShoppingCart, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import bambooToothbrushImg from '@/assets/bamboo-toothbrush.jpeg';
+import cottonBagsImg from '@/assets/reused-cotton-produce-bags.jpeg';
+import loofahSpongeImg from '@/assets/loofah-sponge.jpeg';
 
 const PRODUCTS = [
   {
     id: 101,
     name: "Bamboo Toothbrush (Pack of 4)",
     price: 299,
-    image: "/bamboo toothbrush.jpeg",
+    image: bambooToothbrushImg,
     description: "Eco-friendly, biodegradable bamboo toothbrushes."
   },
   {
     id: 102,
     name: "Reusable Cotton Produce Bags",
     price: 450,
-    image: "/reused cotton produce bags.jpeg",
+    image: cottonBagsImg,
     description: "Set of 5 organic cotton bags for grocery shopping."
   },
   {
@@ -30,7 +33,7 @@ const PRODUCTS = [
     id: 104,
     name: "Natural Loofah Sponges",
     price: 199,
-    image: "/loofah sponge.jpeg",
+    image: loofahSpongeImg,
     description: "Plant-based alternative to plastic dish sponges."
   }
 ];
